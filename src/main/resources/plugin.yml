@@ -7,3 +7,6 @@ commands:
       usage: /<command> [player]
       permission: TeleportPlugin.basic
       permission-message: You don't have <permission>
+
+   ping:
+

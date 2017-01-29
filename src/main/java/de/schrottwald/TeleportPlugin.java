@@ -31,6 +31,9 @@ public final class TeleportPlugin extends JavaPlugin {
                 getLogger().info("Test command!");
                 return true;
 
+            case "ping":
+                sender.sendMessage("pong!");
+                return true;
         }
 
         return false;
