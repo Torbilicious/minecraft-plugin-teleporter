@@ -1,5 +1,7 @@
 package de.schrottwald;
 
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class TeleportPlugin extends JavaPlugin {
@@ -18,5 +20,19 @@ public final class TeleportPlugin extends JavaPlugin {
         super.onEnable();
 
         getLogger().info("onEnable has been invoked!");
+    }
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+
+        switch (cmd.getName()) {
+
+            case "test":
+                getLogger().info("Test command!");
+                return true;
+
+        }
+
+        return false;
     }
 }
