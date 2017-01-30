@@ -29,6 +29,13 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/craftbukkit-1.7.10-R0.1.jar</systemPath>
         </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.12</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
 
