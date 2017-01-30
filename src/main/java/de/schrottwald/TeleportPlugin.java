@@ -17,6 +17,8 @@ public final class TeleportPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
 
+        new EventListener(this);
+
         super.onEnable();
 
         getLogger().info("onEnable has been invoked!");
