@@ -8,18 +8,18 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 public class EventListener implements Listener {
 
-    public EventListener(TeleportPlugin plugin) {
+    EventListener(TeleportPlugin plugin) {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
     @EventHandler
-    public void onPlayerTot(PlayerDeathEvent ev) {
+    public void onPlayerDeath(PlayerDeathEvent ev) {
         Player p = ev.getEntity();
         p.sendMessage("Du hättest doch nur noch " + p.getExpToLevel() + " Exp\nbis Level " + (p.getLevel()  + 1) + "gebraucht :)");
     }
 
     @EventHandler
-    public void onPlayerBeitritt(PlayerJoinEvent ev) {
+    public void onPlayerJoin(PlayerJoinEvent ev) {
         Player p = ev.getPlayer();
         p.sendMessage("Hallo " + p.getDisplayName());
     }

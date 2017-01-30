@@ -2,11 +2,16 @@ name: TeleportPlugin
 main: de.schrottwald.TeleportPlugin
 version: 0.1
 commands:
-   test:
-      description: This is a demo command.
-      usage: /<command> [player]
+   setPort:
+      description: This sets a port point.
+      usage: /<command>
       permission: TeleportPlugin.basic
       permission-message: You don't have <permission>
 
-   ping:
+   port:
+     description: This sets a port point.
+     usage: /<command>
+     permission: TeleportPlugin.basic
+     permission-message: You don't have <permission>
+
 
