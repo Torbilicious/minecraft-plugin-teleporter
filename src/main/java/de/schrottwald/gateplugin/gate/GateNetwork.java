@@ -1,11 +1,20 @@
 package de.schrottwald.gateplugin.gate;
 
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class GateNetwork {
 
     private List<Gate> gates = new ArrayList<>();
+
+    @Getter
+    private final String networkName;
+
+    public GateNetwork(String networkName) {
+        this.networkName = networkName;
+    }
 
     public Gate getGateWithId(Integer id) {
 

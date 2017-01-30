@@ -23,7 +23,7 @@ public final class TeleportPlugin extends JavaPlugin {
     public void onEnable() {
 
         new EventListener(this);
-        network = new GateNetwork();
+        network = new GateNetwork("");
 
         super.onEnable();
 
