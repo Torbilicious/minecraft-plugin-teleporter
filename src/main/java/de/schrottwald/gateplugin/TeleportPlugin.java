@@ -42,7 +42,7 @@ public final class TeleportPlugin extends JavaPlugin {
 
         switch (cmd.getName()) {
             case "setPort":
-                network.add(new Gate(player));
+                network.add(new Gate(player.getLocation(), network, player.getName()));
                 sender.sendMessage("Setting port point! " + network.getGateByName(player.getName()));
                 return true;
 
