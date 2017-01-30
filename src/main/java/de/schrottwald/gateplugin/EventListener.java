@@ -1,4 +1,4 @@
-package de.schrottwald;
+package de.schrottwald.gateplugin;
 
 import org.bukkit.Material;
 import org.bukkit.block.Sign;

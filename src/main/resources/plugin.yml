@@ -1,5 +1,5 @@
 name: TeleportPlugin
-main: de.schrottwald.TeleportPlugin
+main: TeleportPlugin
 version: 0.1
 commands:
    setPort:

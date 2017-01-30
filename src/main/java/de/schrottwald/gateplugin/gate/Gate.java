@@ -1,4 +1,4 @@
-package de.schrottwald;
+package de.schrottwald.gateplugin.gate;
 
 import lombok.Getter;
 import lombok.ToString;

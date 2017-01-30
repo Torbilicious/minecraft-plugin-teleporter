@@ -1,16 +1,15 @@
-package de.schrottwald;
+package de.schrottwald.gateplugin;
 
+import de.schrottwald.gateplugin.gate.Gate;
+import de.schrottwald.gateplugin.gate.GateNetwork;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.ArrayList;
-import java.util.Objects;
-
 public final class TeleportPlugin extends JavaPlugin {
 
-    private ArrayList<Gate> gates = new ArrayList<>();
+    private GateNetwork network;
 
     @Override
     public void onDisable() {
@@ -24,6 +23,7 @@ public final class TeleportPlugin extends JavaPlugin {
     public void onEnable() {
 
         new EventListener(this);
+        network = new GateNetwork();
 
         super.onEnable();
 
@@ -42,31 +42,19 @@ public final class TeleportPlugin extends JavaPlugin {
 
         switch (cmd.getName()) {
             case "setPort":
-                gates.add(new Gate(player));
-                sender.sendMessage("Setting port point! " + getGateByName(player.getName()));
+                network.add(new Gate(player));
+                sender.sendMessage("Setting port point! " + network.getGateByName(player.getName()));
                 return true;
 
             case "port":
-                if(gates.get(0) == null) {
+                if(network.getGateByName(player.getName()) == null) {
 
                     player.sendMessage("You do not have any port set yet.");
                 }
-                player.teleport(getGateByName(player.getName()).getLocation());
+                player.teleport(network.getGateByName(player.getName()).getLocation());
                 return true;
-
         }
 
         return false;
-    }
-
-    private Gate getGateByName(String name) {
-
-        for (Gate gate: gates) {
-            if(Objects.equals(gate.getName(), name)){
-                return gate;
-            }
-        }
-
-        return null;
     }
 }
