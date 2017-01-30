@@ -61,13 +61,12 @@ public final class TeleportPlugin extends JavaPlugin {
 
     private Gate getGateByName(String name) {
 
-        final Gate[] desiredGate = new Gate[1];
-        gates.forEach(gate ->{
+        for (Gate gate: gates) {
             if(Objects.equals(gate.getName(), name)){
-                desiredGate[0] = gate;
+                return gate;
             }
-        } );
+        }
 
-        return desiredGate[0];
+        return null;
     }
 }
