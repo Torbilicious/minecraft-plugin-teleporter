@@ -1,13 +1,16 @@
 package de.schrottwald;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.ToString;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-@Data
+@ToString
 public class Gate {
 
+    @Getter
     private final Location location;
+    @Getter
     private final String name;
 
     public Gate(Player player) {
