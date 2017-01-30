@@ -6,27 +6,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class EventListener implements Listener {
 
     EventListener(TeleportPlugin plugin) {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
-    }
-
-    @EventHandler
-    public void onPlayerDeath(PlayerDeathEvent ev) {
-        Player p = ev.getEntity();
-        p.sendMessage("Du hättest doch nur noch " + p.getExpToLevel() + " Exp\nbis Level " + (p.getLevel()  + 1) + "gebraucht :)");
-    }
-
-    @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent ev) {
-        Player p = ev.getPlayer();
-        p.sendMessage("Hallo " + p.getDisplayName());
     }
 
     @EventHandler
