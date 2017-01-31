@@ -1,7 +1,7 @@
 package de.schrottwald.gateplugin.gate;
 
 import lombok.Getter;
-import lombok.ToString;
+import org.bukkit.Location;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +25,11 @@ public class GateNetwork {
     public void add(Gate gate) {
 
         gates.add(gate);
+    }
+
+    public void addNewGate(Location location, String name) {
+
+        gates.add(new Gate(location, this, name));
     }
 
     public Gate getGateByName(String name) {

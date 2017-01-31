@@ -28,7 +28,8 @@ public final class TeleportPlugin extends JavaPlugin {
         new EventListener(this);
         network = new GateNetwork("");
 
-        network.add(new Gate(new Location(getServer().getWorld("world"),-188D, 95D, 296D ), network, "Torbilicious"));
+        Location location = new Location(getServer().getWorld("world"),-188D, 95D, 296D );
+        network.addNewGate(location, "Torbilicious");
 
         getLogger().info("onEnable has been invoked!");
     }
