@@ -2,6 +2,7 @@ package de.schrottwald.gateplugin;
 
 import de.schrottwald.gateplugin.gate.Gate;
 import de.schrottwald.gateplugin.gate.GateNetwork;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -22,10 +23,12 @@ public final class TeleportPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
 
+        super.onEnable();
+
         new EventListener(this);
         network = new GateNetwork("");
 
-        super.onEnable();
+        network.add(new Gate(new Location(getServer().getWorld("world"),-188D, 95D, 296D ), network, "Torbilicious"));
 
         getLogger().info("onEnable has been invoked!");
     }
@@ -43,7 +46,7 @@ public final class TeleportPlugin extends JavaPlugin {
         switch (cmd.getName()) {
             case "setPort":
                 network.add(new Gate(player.getLocation(), network, player.getName()));
-                sender.sendMessage("Setting port point! " + network.getGateByName(player.getName()));
+                getLogger().info("Setting port point! " + network.getGateByName(player.getName()));
                 return true;
 
             case "port":
