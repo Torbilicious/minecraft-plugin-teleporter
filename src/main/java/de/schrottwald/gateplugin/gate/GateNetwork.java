@@ -1,10 +1,12 @@
 package de.schrottwald.gateplugin.gate;
 
 import lombok.Getter;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@ToString
 public class GateNetwork {
 
     private List<Gate> gates = new ArrayList<>();
