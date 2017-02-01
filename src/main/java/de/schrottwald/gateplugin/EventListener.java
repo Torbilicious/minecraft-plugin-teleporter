@@ -85,7 +85,10 @@ public class EventListener implements Listener {
 
                 int index = 0;
                 for (int i = 0; i < gateList.size(); i++) {
-                    if(gateList.get(i).equals(((s.getLine(2)).replaceAll(">§a","")).replaceAll("§0<",""))) {
+                    String line2 = s.getLine(2);
+                    String text = line2.substring(line2.indexOf(">§a") + 1, line2.indexOf("§0<"));
+//                    String text2 = ((line2).replaceAll(">§a","")).replaceAll("§0<","");
+                    if(gateList.get(i).equals(text)) {
                         index = i;
                     }
                 }
