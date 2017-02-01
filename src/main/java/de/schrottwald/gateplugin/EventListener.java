@@ -1,5 +1,6 @@
 package de.schrottwald.gateplugin;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
@@ -11,6 +12,11 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.bukkit.Bukkit.getLogger;
 
 public class EventListener implements Listener {
 
@@ -62,5 +68,48 @@ public class EventListener implements Listener {
 
         plugin.getLogger().info("Obsidian gebaut von: " + event.getPlayer().getName());
 
+    }
+
+    @EventHandler
+    public void signClick(PlayerInteractEvent e){
+
+        if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
+
+            if (e.getClickedBlock().getState() instanceof Sign) {
+                List<String> gateList = new ArrayList<>();
+                for (int i = 1; i < 10; i++) {
+                    gateList.add("Gate" + i);
+                }
+
+                Sign s = (Sign) e.getClickedBlock().getState();
+
+                int index = 0;
+                for (int i = 0; i < gateList.size(); i++) {
+                    if(gateList.get(i).equals(((s.getLine(2)).replaceAll(">§a","")).replaceAll("§0<",""))) {
+                        index = i;
+                    }
+                }
+                /* Kann ich für die umgekehrte Funktion noch gebrauchen
+                if (index - 1 < 0) {
+                    s.setLine(0,gateList.get(gateList.size()));
+                } else {
+                    s.setLine(0,gateList.get(index - 1));
+                }
+                */
+                s.setLine(1,s.getLine(2));
+                s.setLine(2,">" + ChatColor.GREEN + s.getLine(3) + ChatColor.BLACK + "<");
+                if (index + 2 == gateList.size()) {
+                    s.setLine(3, gateList.get(0));
+                } else if (index + 2 > gateList.size()) {
+                    s.setLine(3, gateList.get(1));
+                } else {
+                    s.setLine(3,gateList.get(index + 2));
+                }
+                s.update();
+                getLogger().info("" + index + "/" + gateList.size());
+                getLogger().info("" + ((s.getLine(2)).replaceAll(">§a","")).replaceAll("§0<",""));
+                getLogger().info("" + s.getLine(2));
+            }
+        }
     }
 }
