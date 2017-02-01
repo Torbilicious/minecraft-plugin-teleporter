@@ -42,4 +42,45 @@ public class GateNetwork {
 
         return null;
     }
+
+    public Integer getIndexOfGate(Gate gate) {
+
+        return gates.lastIndexOf(gate);
+    }
+
+    public Integer getIndexOfGate(String gate) {
+
+        int index = 0;
+        for (int i = 0; i < gates.size(); i++) {
+
+            if(gates.get(i).getName().equals(gate)) {
+                index = i;
+            }
+        }
+
+        return index;
+    }
+
+    public Gate getNextGate(Gate gate) {
+
+        Integer index = gates.lastIndexOf(gate);
+        if (index == -1) {
+
+            return null;
+        } else if (index == gates.size()-1) {
+            return gates.get(0);
+        } else {
+            return gates.get(index + 1);
+        }
+    }
+
+    public Integer getNumberOfGates() {
+
+        return gates.size();
+    }
+
+    public void printAllGates() {
+
+        gates.forEach(System.out::println);
+    }
 }
