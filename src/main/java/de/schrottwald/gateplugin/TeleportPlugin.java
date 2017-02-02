@@ -32,6 +32,15 @@ public final class TeleportPlugin extends JavaPlugin {
         network.addNewGate(location, "Torbilicious");
 
         getLogger().info("onEnable has been invoked!");
+
+        this.reloadConfig();
+
+        this.getConfig().options().header("Frei belliebiger Text auswählbar");
+        this.getConfig().addDefault("gateplugin.command.INFO.messages.hello", "Hallo");
+        this.getConfig().addDefault("gateplugin.command.INFO.messages.loaded", "geladen");
+
+        this.getConfig().options().copyDefaults(true);
+        this.saveConfig();
     }
 
     @Override
@@ -56,6 +65,11 @@ public final class TeleportPlugin extends JavaPlugin {
                     player.sendMessage("You do not have any port set yet.");
                 }
                 player.teleport(network.getGateByName(player.getName()).getLocation());
+                return true;
+
+            case "info":
+                player.sendMessage(this.getConfig().getString("gateplugin.command.INFO.messages.hello") + " " + player.getDisplayName());
+                player.sendMessage(this.getDescription().getName() + " " + this.getConfig().getString("gateplugin.command.INFO.messages.loaded"));
                 return true;
         }
 

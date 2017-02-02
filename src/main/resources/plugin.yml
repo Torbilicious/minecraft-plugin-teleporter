@@ -14,4 +14,8 @@ commands:
      permission: TeleportPlugin.basic
      permission-message: You don't have <permission>
 
+   info:
+     description: Give info about the plugin
+     usage: /info
+
 
