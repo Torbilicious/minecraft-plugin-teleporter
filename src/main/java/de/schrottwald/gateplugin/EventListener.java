@@ -5,6 +5,7 @@ import de.schrottwald.gateplugin.gate.GateNetwork;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,6 +15,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.material.Lever;
 
 import static org.bukkit.Bukkit.getLogger;
 
@@ -98,8 +100,26 @@ public class EventListener implements Listener {
                 s.update();
                 Integer index = network.getIndexOfGate(s.getLine(2));
                 getLogger().info("" + index + "/" + network.getNumberOfGates());
-                getLogger().info("Target: " + target.getName());
+                getLogger().info("Target: jbdfklbhdghi" + target.getName());
                 getLogger().info("" + s.getLine(2));
+            }
+        }
+    }
+
+    @EventHandler
+    public void leverClick(PlayerInteractEvent e){
+
+        getLogger().info("Lever: 1");
+
+        if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
+
+            getLogger().info("Lever: 2");
+
+
+            if (e.getClickedBlock().getType() == Material.LEVER) {
+                Lever l = (Lever) e.getClickedBlock().getState().getData();
+
+                getLogger().info("Lever: " + l.getFacing());
             }
         }
     }
