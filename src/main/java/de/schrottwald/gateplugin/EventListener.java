@@ -119,7 +119,8 @@ public class EventListener implements Listener {
             if (e.getClickedBlock().getType() == Material.LEVER) {
                 Lever l = (Lever) e.getClickedBlock().getState().getData();
 
-                getLogger().info("Lever: " + l.getFacing());
+                getLogger().info("Lever facing: " + l.getFacing());
+                getLogger().info("Lever powered: " + l.isPowered());
             }
         }
     }

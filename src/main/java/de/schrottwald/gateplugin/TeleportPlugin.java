@@ -5,6 +5,7 @@ import de.schrottwald.gateplugin.gate.GateNetwork;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -33,13 +34,13 @@ public final class TeleportPlugin extends JavaPlugin {
 
         getLogger().info("onEnable has been invoked!");
 
-        this.reloadConfig();
+        FileConfiguration config = this.getConfig();
 
-        this.getConfig().options().header("Frei belliebiger Text auswählbar");
-        this.getConfig().addDefault("gateplugin.command.INFO.messages.hello", "Hallo");
-        this.getConfig().addDefault("gateplugin.command.INFO.messages.loaded", "geladen");
-
-        this.getConfig().options().copyDefaults(true);
+        config.options().header("Frei belliebiger Text auswählbar");
+        config.addDefault("gateplugin.command.INFO.messages.hello", "Hallo");
+        config.addDefault("gateplugin.command.INFO.messages.loaded", "geladen");
+        
+        config.options().copyDefaults(true);
         this.saveConfig();
     }
 
